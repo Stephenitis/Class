@@ -1,0 +1,23 @@
+<h1>Listing classrooms</h1>
+
+<table class="table table-striped tabled-bordered table-hover table-condensed">
+  <tr>
+    <th>Classroom Designation</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @classrooms.each do |classroom| %>
+  <tr>
+    <td><%= link_to classroom.name, classroom %></td>
+    <td><%= link_to 'View Class', classroom %></td>
+    <td><%= link_to 'Edit Class', edit_classroom_path(classroom) %></td>
+    <td><%= link_to 'Delete', classroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Classroom', new_classroom_path %>

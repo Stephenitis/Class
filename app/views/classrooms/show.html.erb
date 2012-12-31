@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @classroom.name %>
+</p>
+<table class="table table-striped tabled-bordered table-hover table-condensed">
+  <tr>
+    <th>Teacher(s)</th>
+  <th></th>
+    <th></th>
+  </tr>
+
+  <% @classroom.teachers.each do |teacher| %>
+    <tr>
+      <td><%= link_to teacher.teacher_name, edit_classroom_teacher_path(@classroom, teacher) %></td>
+    <td><%= link_to 'Edit Teacher', edit_teacher_path(teacher) %></td>
+    <td><%= link_to 'Remove Teacher', teacher, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <% end %>
+</table>
+<p>
+	<%= link_to 'New Teacher', new_classroom_teacher_path(@classroom)%>
+</p>
+<table class="table table-striped tabled-bordered table-hover table-condensed">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @classroom.students.each do |student| %>
+  <tr>
+    <td><%= student.name %></td>
+    <td><%= student.email %></td>
+    <td><%= link_to 'Edit Student', edit_student_path(student) %></td>
+    <td><%= link_to 'Remove Student', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+<p>
+	<%= link_to 'Add Student', new_classroom_student_path(@classroom)%>
+</p>
+<%= link_to 'Edit', edit_classroom_path(@classroom) %> |
+<%= link_to 'Back', classrooms_path %>
