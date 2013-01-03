@@ -33,7 +33,9 @@
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'images/favicon.ico', :rel => 'shortcut icon' %>
-  </head>
+    <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>  
+</head>
   <body>
 
     <div class="navbar navbar-fluid-top">
@@ -64,9 +66,14 @@
               <li class="nav-header">Sidebar</li>
 			<p>Logged in</p>
 				<li class="nav-header">Sidebar</li>
-              <li><%= link_to "Home", "/path1"  %></li>
-              <li><%= link_to "Messages", "/path2"  %></li>
-              <li><%= link_to "Settings", "/path3"  %></li>
+         		<% if user_signed_in? %>
+				  Logged in as <strong><%= current_user.email %></strong>.
+				  <%= link_to 'Edit profile', edit_user_registration_path %> |
+				  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+				<% else %>
+				  <%= link_to "Sign up", new_user_registration_path %> |
+				  <%= link_to "Login", new_user_session_path %>
+				<% end %>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->

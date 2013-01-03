@@ -1,4 +1,5 @@
 class ClassroomsController < ApplicationController
+  before_filter :authenticate_user!, except: [:index, :show]
   # GET /classrooms
   # GET /classrooms.json
   def index
