@@ -9,8 +9,8 @@ gem 'sqlite3'
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
-gem 'devise'
-
+gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'rake'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -39,3 +39,8 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-github'
